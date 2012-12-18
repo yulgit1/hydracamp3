@@ -5,8 +5,11 @@ class ZombiesController < ApplicationController
   def create
     @zombie = Zombie.create(params[:zombie])
     redirect_to zombies_path, :notice=>"Added Zombie"
+    #redirect_to :controller=>'zombies',:action=>'index',:notice=>"Added Zombie"
   end
   def index
     @zombies = Zombie.order(:name)
   end
+  #def show
+  #end
 end

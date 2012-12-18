@@ -21,13 +21,20 @@ describe ZombiesController do
   end
   describe "#index" do
     before do
-      @zombie1 = Zombie.create(:name=>"Ash")
-      @zombie2 = Zombie.create(:name=>"Sarah")
+      @zombie1 = Zombie.create(:name=>"Ash",:graveyard=>"Morse")
+      @zombie2 = Zombie.create(:name=>"Sarah",:graveyard=>"Stiles")
     end
     it "should display a list of all the zombies" do
       get :index
       response.should be_successful
       assigns[:zombies].should == [@zombie1,@zombie2]
+    end
+    it "should have graveyard variables" do
+      get :index
+      response.should be_successful 
+      assigns[:zombies].should == [@zombie1,@zombie2]
+      #page.should have_content "Morse"
+      #page.should have_content "Stiles"
     end
   end
 end
